@@ -5,12 +5,46 @@
 // Place your own variable overrides here, these will override any Bootstrap and theme variables.
 
 
+$nvs-blue:      #0460A9;
+$nvs-carmine:   #D13A32;
+$nvs-sienna:    #F58144;
+$nvs-apricot:   #FCB13B;
+
+$novartis-color-scheme: (
+    "blue":     $nvs-blue,
+    "carmine":  $nvs-carmine,
+    "sienna":   $nvs-sienna,
+    "apricot":  $nvs-apricot,
+    "black":    $black
+);
+
+$novartis-patterns: (
+    "blue-carbon":          url("../img/nvs/pattern/168px/Novartis_Open_Carbon_Blue_168px.svg"),
+    "carmine-carbon":       url("../img/nvs/pattern/168px/Novartis_Open_Carbon_Carmine_168px.svg"),
+    "sienna-carbon":        url("../img/nvs/pattern/168px/Novartis_Open_Carbon_Sienna_168px.svg"),
+    "apricot-carbon":       url("../img/nvs/pattern/168px/Novartis_Open_Carbon_Apricot_168px.svg"),
+    "blue-chromosome":      url("../img/nvs/pattern/168px/Novartis_Open_Chromosome_Blue_168px.svg"),
+    "carmine-chromosome":   url("../img/nvs/pattern/168px/Novartis_Open_Chromosome_Carmine_168px.svg"),
+    "sienna-chromosome":    url("../img/nvs/pattern/168px/Novartis_Open_Chromosome_Sienna_168px.svg"),
+    "apricot-chromosome":   url("../img/nvs/pattern/168px/Novartis_Open_Chromosome_Apricot_168px.svg"),
+    "blue-dna":             url("../img/nvs/pattern/168px/Novartis_Open_DNA_Blue_168px.svg"),
+    "carmine-dna":          url("../img/nvs/pattern/168px/Novartis_Open_DNA_Carmine_168px.svg"),
+    "sienna-dna":           url("../img/nvs/pattern/168px/Novartis_Open_DNA_Sienna_168px.svg"),
+    "apricot-dna":          url("../img/nvs/pattern/168px/Novartis_Open_DNA_Apricot_168px.svg"),
+    "blue-graduated":       url("../img/nvs/pattern/168px/Novartis_Open_Graduated_Blue_168px.svg"),
+    "carmine-graduated":    url("../img/nvs/pattern/168px/Novartis_Open_Graduated_Carmine_168px.svg"),
+    "sienna-graduated":     url("../img/nvs/pattern/168px/Novartis_Open_Graduated_Sienna_168px.svg"),
+    "apricot-graduated":    url("../img/nvs/pattern/168px/Novartis_Open_Graduated_Apricot_168px.svg")
+);
+
+
+$arrow-character: "\2192";
 // Color Scheme
 // Uncomment the variables below and change the hex values.
 
-// $primary:      #000;
-// $primary-2:     #000;
-// $primary-3:     #000;
+$primary:       $nvs-blue;
+$primary-2:     $nvs-carmine;
+$primary-3:     #000;
 
 // Do not change or remove the $theme-color-scheme or $theme-colors maps below
 

@@ -1,0 +1,35 @@
+@mixin nvs-page-theme($parent, $color) {
+
+    #{$parent} .banner {
+        .tab {
+            background-color: darken($color, 20%) !important;
+
+        }
+    }
+
+    #{$parent} .card {
+
+        >.card-img-top,
+        >.card-body {
+            border-top-color: darken($color, 10%);
+
+        }
+    }
+}
+
+@mixin nvs-page-pattern($parent, $pattern) {
+    #{$parent}{ background-image: $pattern;}
+}
+
+body {
+
+    @each $color,
+    $value in $novartis-color-scheme {
+        @include nvs-page-theme("&.nvs-#{$color}", $value);
+    }
+
+    @each $pattern,
+    $value in $novartis-patterns {
+        @include nvs-page-pattern("&.#{$pattern}", $value);
+    }
+}
