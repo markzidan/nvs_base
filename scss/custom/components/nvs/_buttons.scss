@@ -5,15 +5,15 @@
 //
 @mixin nvs-button-variant($background, $border, $hover-background: darken($background, 7.5%), $hover-border: darken($border, 10%), $active-background: darken($background, 10%), $active-border: darken($border, 12.5%)) {
     background: transparent;
-    color: #000;
+    color: $nvs-black;
     // @include gradient-bg($background);
-    border-color: $black;
+    border-color: $nvs-black;
     @include box-shadow($btn-box-shadow);
 
     @include hover {
         color: color-yiq($hover-background);
         @include gradient-bg($background);
-        border-color: #000;
+        border-color: $background;
     }
 
     &:focus,
@@ -74,7 +74,8 @@
     background-color: $active-background;
 
     @include hover {
-        color: $color-hover;
+        // color: $color-hover;
+        color: #fff;
         background-color: darken($active-background, 15%);
         border-color: darken($active-border, 15%);
     }
@@ -116,7 +117,8 @@
     border-color: $color;
 
     @include hover {
-        color: $color-hover;
+        // color: $color-hover;
+        color: #fff;
         background-color: $active-background;
         border-color: $active-border;
     }
@@ -167,18 +169,18 @@
     display: inline-block;
     font-family: $btn-font-family;
     font-weight: bold;
-    color: $black;
+    color: $nvs-black;
     text-align: center;
     vertical-align: middle;
     user-select: none;
     background-color: transparent;
-    border: 2px solid #000;
+    border: 2px solid $nvs-black;
     @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
     @include transition($btn-transition);
 
     @include hover {
         color: #fff;
-        background-color: #000;
+        background-color: $nvs-black;
         text-decoration: none;
     }
 
@@ -415,6 +417,28 @@ $color in $novartis-color-scheme {
         }
     }
 
+    &.back-to-top {
+        svg.icon {
+            transition: $transition-base;
+            width: 50%;
+            * {
+                transition: $transition-base;
+                fill: none;
+            }
+
+        }
+
+        // &:hover {
+                    
+        //     svg.icon {
+        //         polyline {
+        //                 stroke: #fff !important;
+        //             }
+                
+        //     }
+        // }
+    }
+
     &.button-sm {
         width: 2rem;
         height: 2rem;
@@ -488,16 +512,18 @@ $color in $novartis-color-scheme {
         display: inline-block;
         vertical-align: middle;
     }
+
     >.icon,
     path {
         transition: $transition-base
     }
+
     >.icon {
-        color: #000;
+        color: $nvs-black;
     }
 
     path {
-        fill: #000;
+        fill: $nvs-black;
     }
 
     &:hover {

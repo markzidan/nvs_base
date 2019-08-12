@@ -4,6 +4,10 @@
 //
 // Place your own custom CSS or SCSS rules below this line, these rules will override any Bootstrap and theme variables.
 
+@each $color, $value in $novartis-color-scheme {
+  @include bg-variant(".bg-#{$color}", $value);
+}
+
 @import "custom/components/nvs/card";
 @import "custom/components/nvs/base";
 @import "custom/components/nvs/navs";
@@ -11,6 +15,8 @@
 @import "custom/components/nvs/dropdowns";
 @import "custom/components/nvs/buttons";
 @import "custom/components/nvs/portfolio";
+@import "custom/components/nvs/input-group";
+@import "custom/components/nvs/footer";
 
 
 @keyframes link-arrow-movement {

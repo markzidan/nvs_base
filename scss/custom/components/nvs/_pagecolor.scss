@@ -2,7 +2,8 @@
 
     #{$parent} .banner {
         .tab {
-            background-color: darken($color, 20%) !important;
+            // background-color: darken($color, 20%) !important;
+            background-color: $color !important;
 
         }
     }
@@ -11,7 +12,8 @@
 
         >.card-img-top,
         >.card-body {
-            border-top-color: darken($color, 10%);
+            // border-top-color: darken($color, 10%);
+            border-top-color: $color;
 
         }
     }
