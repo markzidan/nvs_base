@@ -1,0 +1,538 @@
+// stylelint-disable selector-no-qualifying-type
+
+//
+// Base styles
+//
+@mixin nvs-button-variant($background, $border, $hover-background: darken($background, 7.5%), $hover-border: darken($border, 10%), $active-background: darken($background, 10%), $active-border: darken($border, 12.5%)) {
+    background: transparent;
+    color: $nvs-black;
+    // @include gradient-bg($background);
+    border-color: $nvs-black;
+    @include box-shadow($btn-box-shadow);
+
+    @include hover {
+        color: color-yiq($hover-background);
+        @include gradient-bg($background);
+        border-color: $background;
+    }
+
+    &:focus,
+    &.focus {
+
+        // Avoid using mixin so we can pass custom focus shadow properly
+        @if $enable-shadows {
+            box-shadow: $btn-box-shadow, 0 0 0 $btn-focus-width rgba(mix(color-yiq($background), $border, 15%), .5);
+        }
+
+        @else {
+            box-shadow: 0 0 0 $btn-focus-width rgba(mix(color-yiq($background), $border, 15%), .5);
+        }
+    }
+
+    // Disabled comes first so active can properly restyle
+    &.disabled,
+    &:disabled {
+        color: color-yiq($background);
+        background-color: $background;
+        border-color: $border;
+
+        // Remove CSS gradients if they're enabled
+        @if $enable-gradients {
+            background-image: none;
+        }
+    }
+
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active,
+    .show>&.dropdown-toggle {
+        color: color-yiq($active-background);
+        background-color: $active-background;
+
+        @if $enable-gradients {
+            background-image: none; // Remove the gradient for the pressed/active state
+        }
+
+        border-color: $active-border;
+
+        &:focus {
+
+            // Avoid using mixin so we can pass custom focus shadow properly
+            @if $enable-shadows and $btn-active-box-shadow !=none {
+                box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba(mix(color-yiq($background), $border, 15%), .5);
+            }
+
+            @else {
+                box-shadow: 0 0 0 $btn-focus-width rgba(mix(color-yiq($background), $border, 15%), .5);
+            }
+        }
+    }
+}
+
+@mixin nvs-button-all-variant($color, $color-hover: color-yiq($color), $active-background: $color, $active-border: $color) {
+    color: #fff;
+    border-color: $color;
+    background-color: $active-background;
+
+    @include hover {
+        // color: $color-hover;
+        color: #fff;
+        background-color: darken($active-background, 15%);
+        border-color: darken($active-border, 15%);
+    }
+
+    &:focus,
+    &.focus {
+        box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
+    }
+
+    &.disabled,
+    &:disabled {
+        color: $color;
+        background-color: transparent;
+    }
+
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active,
+    .show>&.dropdown-toggle {
+        color: color-yiq($active-background);
+        background-color: $active-background;
+        border-color: $active-border;
+
+        &:focus {
+
+            // Avoid using mixin so we can pass custom focus shadow properly
+            @if $enable-shadows and $btn-active-box-shadow !=none {
+                box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($color, .5);
+            }
+
+            @else {
+                box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
+            }
+        }
+    }
+}
+
+@mixin nvs-button-outline-variant($color, $color-hover: color-yiq($color), $active-background: $color, $active-border: $color) {
+    color: $color;
+    border-color: $color;
+
+    @include hover {
+        // color: $color-hover;
+        color: #fff;
+        background-color: $active-background;
+        border-color: $active-border;
+    }
+
+    &:focus,
+    &.focus {
+        box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
+    }
+
+    &.disabled,
+    &:disabled {
+        color: $color;
+        background-color: transparent;
+    }
+
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active,
+    .show>&.dropdown-toggle {
+        color: color-yiq($active-background);
+        background-color: $active-background;
+        border-color: $active-border;
+
+        &:focus {
+
+            // Avoid using mixin so we can pass custom focus shadow properly
+            @if $enable-shadows and $btn-active-box-shadow !=none {
+                box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($color, .5);
+            }
+
+            @else {
+                box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
+            }
+        }
+    }
+}
+
+// Button sizes
+@mixin button-size($padding-y, $padding-x, $font-size, $line-height, $border-radius) {
+    padding: $padding-y $padding-x;
+    @include font-size($font-size);
+    line-height: $line-height;
+    // Manually declare to provide an override to the browser default
+    @include border-radius(0, 0);
+}
+
+
+.button {
+    display: inline-block;
+    font-family: $btn-font-family;
+    font-weight: bold;
+    color: $nvs-black;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: transparent;
+    border: 2px solid $nvs-black;
+    @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
+    @include transition($btn-transition);
+
+    @include hover {
+        color: #fff;
+        background-color: $nvs-black;
+        text-decoration: none;
+    }
+
+    &:focus,
+    &.focus {
+        outline: 0;
+        box-shadow: $btn-focus-box-shadow;
+    }
+
+    // Disabled comes first so active can properly restyle
+    &.disabled,
+    &:disabled {
+        opacity: $btn-disabled-opacity;
+        @include box-shadow(none);
+    }
+
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        @include box-shadow($btn-active-box-shadow);
+
+        &:focus {
+            @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+        }
+    }
+}
+
+// Future-proof disabling of clicks on `<a>` elements
+a.button.disabled,
+fieldset:disabled a.button {
+    pointer-events: none;
+}
+
+
+
+@each $color,
+$value in $novartis-color-scheme {
+    .button.#{$color} {
+        @include nvs-button-variant($value, $value);
+    }
+}
+
+//
+// Alternate buttons
+//
+
+@each $color,
+$value in $novartis-color-scheme {
+    .button-outline-#{$color} {
+        @include nvs-button-outline-variant($value);
+    }
+}
+
+@each $color,
+$value in $novartis-color-scheme {
+    .button-all-#{$color} {
+        @include nvs-button-all-variant($value);
+    }
+}
+
+
+
+//
+// Link buttons
+//
+
+// Make a button look and behave like a link
+.button-link {
+    font-weight: $font-weight-normal;
+    color: $link-color;
+    text-decoration: $link-decoration;
+
+    @include hover {
+        color: $link-hover-color;
+        text-decoration: $link-hover-decoration;
+    }
+
+    &:focus,
+    &.focus {
+        text-decoration: $link-hover-decoration;
+        box-shadow: none;
+    }
+
+    &:disabled,
+    &.disabled {
+        color: $btn-link-disabled-color;
+        pointer-events: none;
+    }
+
+    // No need for an active state here
+}
+
+
+//
+// Button Sizes
+//
+
+.button-lg {
+    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
+}
+
+.button-sm {
+    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
+}
+
+
+//
+// Block button
+//
+
+.button-block {
+    display: block;
+    width: 100%;
+
+    // Vertically space out multiple block buttons
+    +.button-block {
+        margin-top: $btn-block-spacing-y;
+    }
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    &.button-block {
+        width: 100%;
+    }
+}
+
+
+
+/* 
+
+THEME BUTTONS, MAY NEED TO BE REMOVED 
+ */
+.button {
+    >span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    >.icon {
+        &:first-child {
+            margin-right: .5rem;
+        }
+
+        &:last-child {
+            margin-left: .5rem;
+        }
+
+        &.d-block {
+            margin: 0 auto;
+            margin-bottom: .75rem;
+            height: 2rem;
+        }
+    }
+
+    &.button-sm {
+        >.icon {
+            height: 1rem;
+        }
+    }
+
+    &:focus {
+        box-shadow: none !important;
+    }
+}
+
+[class*='-flex'] {
+    >.button {
+        flex-shrink: 0;
+    }
+}
+
+@each $name,
+$color in $novartis-color-scheme {
+    .button {
+        &.button-#{$name} {
+            * {
+                fill: color-yiq($color);
+            }
+        }
+    }
+
+    .button-outline-#{$name} {
+        &:hover {
+            * {
+                fill: color-yiq($color);
+            }
+        }
+    }
+}
+
+.button-light {
+    border-color: $border-color;
+    background: $gray-100;
+}
+
+.button-white {
+    background: $white;
+    color: theme-color('primary');
+
+    >.icon {
+        path {
+            fill: theme-color('primary');
+        }
+    }
+
+    &:hover {
+        color: theme-color('primary');
+        background: rgba(255, 255, 255, .9);
+    }
+}
+
+.button-outline-white {
+    border-color: $border-color;
+}
+
+.button-round {
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    >.icon {
+        &:only-child {
+            margin: 0;
+        }
+
+        &.icon-sm {
+            height: 1rem;
+        }
+    }
+
+    &.back-to-top {
+        svg.icon {
+            transition: $transition-base;
+            width: 50%;
+            * {
+                transition: $transition-base;
+                fill: none;
+            }
+
+        }
+
+        // &:hover {
+                    
+        //     svg.icon {
+        //         polyline {
+        //                 stroke: #fff !important;
+        //             }
+                
+        //     }
+        // }
+    }
+
+    &.button-sm {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    &.button-lg {
+        width: 3.75rem;
+        height: 3.75rem;
+    }
+
+    &.button-xlg {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+
+    &.button-lg,
+    &.button-xlg {
+        >.icon {
+            height: 2rem;
+        }
+    }
+}
+
+.button-loading {
+    &:not(.button-loading-animate) {
+        >span {
+            vertical-align: baseline;
+        }
+    }
+
+    .icon {
+        display: none;
+    }
+
+    &.button-loading-animate {
+        .icon {
+            path {
+                animation: spin .5s infinite linear;
+                transform-origin: 12px;
+            }
+
+            display: inline-block;
+        }
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotateZ(0deg);
+    }
+
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+
+// Back to top button
+
+.button {
+    &.back-to-top {
+        position: fixed;
+        bottom: $spacer;
+        right: $spacer;
+        z-index: $zindex-sticky;
+    }
+}
+
+
+.button {
+    >span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    >.icon,
+    path {
+        transition: $transition-base
+    }
+
+    >.icon {
+        color: $nvs-black;
+    }
+
+    path {
+        fill: $nvs-black;
+    }
+
+    &:hover {
+        >.icon {
+            color: #fff;
+        }
+
+        path {
+            fill: #fff;
+        }
+    }
+}
