@@ -1,6 +1,7 @@
 # DIRECTORIES/FILES FOR GIT TO IGNORE
 
 dist/
+
 misc/
 # Windows image file caches
 Thumbs.db
