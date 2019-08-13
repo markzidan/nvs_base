@@ -39,7 +39,7 @@ export {
   // mrFlatpickr,
   // mrFormEmail,
   // mrIonRangeSlider,
-  mrIsotope,
+  // mrIsotope,
   // mrMapsStyle,
   // mrMaps,
   mrOverlayNav,

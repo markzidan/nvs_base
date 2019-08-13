@@ -15,6 +15,9 @@
             // border-top-color: darken($color, 10%);
             border-top-color: $color;
 
+            .tag{
+                color: $color;
+            }
         }
     }
 }

@@ -1,6 +1,10 @@
 @mixin nvs-card-variant($parent, $color) {
   #{$parent} {
     border-top-color: $color !important;
+
+    .tag {
+      color: $color !important;
+    }
   }
 }
 
@@ -37,6 +41,11 @@
 
   >.card-img-top+.card-body {
     border-top: none;
+
+    .tag {
+      top: auto;
+      padding-top: 1rem;
+    }
   }
 
   .card-body {
@@ -54,6 +63,7 @@
     padding: 1rem 0 0;
     color: $nvs-black;
     font-weight: 300;
+    line-height: 1;
   }
 
   a.eyebrow,
@@ -66,6 +76,29 @@
 
     +h4 {
       margin-top: 0;
+    }
+  }
+
+  .tag {
+    position: absolute;
+    top: 1.25rem;
+    right: .5rem;
+    padding-left: .5rem;
+    max-width: 90px;
+    font-size: .9rem;
+    line-height: 1.2;
+    font-weight: 700;
+    text-align: right;
+    color: $nvs-black;
+
+    +h4,
+    +.date,
+    +.eyebrow {
+      max-width: calc(100% - 90px);
+    }
+
+    +h4 {
+      margin-top: .75rem;
     }
   }
 

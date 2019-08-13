@@ -8,6 +8,7 @@
   @include bg-variant(".bg-#{$color}", $value);
 }
 
+@import "custom/components/nvs/typography";
 @import "custom/components/nvs/card";
 @import "custom/components/nvs/base";
 @import "custom/components/nvs/navs";
@@ -16,6 +17,7 @@
 @import "custom/components/nvs/buttons";
 @import "custom/components/nvs/portfolio";
 @import "custom/components/nvs/input-group";
+@import "custom/components/nvs/faq";
 @import "custom/components/nvs/footer";
 
 

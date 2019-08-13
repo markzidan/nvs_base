@@ -2737,7 +2737,6 @@
   })();
 
   exports.mrDropdownGrid = mrDropdownGrid;
-  exports.mrIsotope = mrIsotope;
   exports.mrOverlayNav = mrOverlayNav;
   exports.mrReadingPosition = mrReadingPosition;
   exports.mrSmoothScroll = mrSmoothScroll;
