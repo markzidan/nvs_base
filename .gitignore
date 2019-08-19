@@ -1,6 +1,8 @@
 # DIRECTORIES/FILES FOR GIT TO IGNORE
 
-dist/
+dist/assets/img
+dist/assets/js
+dist/assets/fonts
 
 misc/
 # Windows image file caches
