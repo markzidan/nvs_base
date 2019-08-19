@@ -8,6 +8,7 @@ body {
     background-image: url("../img/nvs/pattern/168px/Novartis_Open_Carbon_Blue_168px.svg");
     background-color: #fff;
     background-position: -90px 0;
+    background-size: 120px 120px;
     overflow-y: scroll;
 
 
@@ -20,10 +21,12 @@ body {
     }
 }
 
+
 .container-fluid,
 .container {
     padding-left: 3rem;
 }
+
 
 .header {
     padding: 1rem;
@@ -36,6 +39,10 @@ body {
         margin-top: .75em;
         font-weight: 900;
         color: $nvs-black;
+    }
+
+    +section {
+        padding-top: 1rem;
     }
 }
 
@@ -50,6 +57,15 @@ body {
 
     .container {
         padding-left: 3.5rem;
+    }
+
+    .modal {
+
+        .container-fluid,
+        .container {
+            padding-left: 1rem;
+
+        }
     }
 
     .header {
@@ -147,7 +163,8 @@ body {
 
 @include media-breakpoint-up(md) {
     .banner {
-        min-height: 50vh;
+        // min-height: 50vh;
+        min-height: 350px;
 
         &.no-img {
             min-height: 300px;
@@ -163,7 +180,8 @@ body {
             left: 0;
             bottom: 3rem;
             color: #fff;
-            max-width: 30.625rem;
+            // max-width: 30.625rem;
+            max-width: 40%;
 
 
             h1 {

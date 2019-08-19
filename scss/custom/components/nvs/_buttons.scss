@@ -165,7 +165,7 @@
 }
 
 
-.button {
+.btn {
     display: inline-block;
     font-family: $btn-font-family;
     font-weight: bold;
@@ -208,8 +208,8 @@
 }
 
 // Future-proof disabling of clicks on `<a>` elements
-a.button.disabled,
-fieldset:disabled a.button {
+a.btn.disabled,
+fieldset:disabled a.btn {
     pointer-events: none;
 }
 
@@ -217,7 +217,7 @@ fieldset:disabled a.button {
 
 @each $color,
 $value in $novartis-color-scheme {
-    .button.#{$color} {
+    .btn.#{$color} {
         @include nvs-button-variant($value, $value);
     }
 }
@@ -228,14 +228,14 @@ $value in $novartis-color-scheme {
 
 @each $color,
 $value in $novartis-color-scheme {
-    .button-outline-#{$color} {
+    .btn-outline-#{$color} {
         @include nvs-button-outline-variant($value);
     }
 }
 
 @each $color,
 $value in $novartis-color-scheme {
-    .button-all-#{$color} {
+    .btn-all-#{$color} {
         @include nvs-button-all-variant($value);
     }
 }
@@ -247,7 +247,7 @@ $value in $novartis-color-scheme {
 //
 
 // Make a button look and behave like a link
-.button-link {
+.btn-link {
     font-weight: $font-weight-normal;
     color: $link-color;
     text-decoration: $link-decoration;
@@ -277,11 +277,11 @@ $value in $novartis-color-scheme {
 // Button Sizes
 //
 
-.button-lg {
+.btn-lg {
     @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
 }
 
-.button-sm {
+.btn-sm {
     @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
 }
 
@@ -290,12 +290,12 @@ $value in $novartis-color-scheme {
 // Block button
 //
 
-.button-block {
+.btn-block {
     display: block;
     width: 100%;
 
     // Vertically space out multiple block buttons
-    +.button-block {
+    +.btn-block {
         margin-top: $btn-block-spacing-y;
     }
 }
@@ -304,7 +304,7 @@ $value in $novartis-color-scheme {
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
-    &.button-block {
+    &.btn-block {
         width: 100%;
     }
 }
@@ -315,7 +315,7 @@ input[type="button"] {
 
 THEME BUTTONS, MAY NEED TO BE REMOVED 
  */
-.button {
+.btn {
     >span {
         display: inline-block;
         vertical-align: middle;
@@ -337,7 +337,7 @@ THEME BUTTONS, MAY NEED TO BE REMOVED
         }
     }
 
-    &.button-sm {
+    &.btn-sm {
         >.icon {
             height: 1rem;
         }
@@ -349,22 +349,22 @@ THEME BUTTONS, MAY NEED TO BE REMOVED
 }
 
 [class*='-flex'] {
-    >.button {
+    >.btn {
         flex-shrink: 0;
     }
 }
 
 @each $name,
 $color in $novartis-color-scheme {
-    .button {
-        &.button-#{$name} {
+    .btn {
+        &.btn-#{$name} {
             * {
                 fill: color-yiq($color);
             }
         }
     }
 
-    .button-outline-#{$name} {
+    .btn-outline-#{$name} {
         &:hover {
             * {
                 fill: color-yiq($color);
@@ -373,12 +373,12 @@ $color in $novartis-color-scheme {
     }
 }
 
-.button-light {
+.btn-light {
     border-color: $border-color;
-    background: $gray-100;
+    background: $nvs-grey-light;
 }
 
-.button-white {
+.btn-white {
     background: $white;
     color: theme-color('primary');
 
@@ -394,11 +394,11 @@ $color in $novartis-color-scheme {
     }
 }
 
-.button-outline-white {
+.btn-outline-white {
     border-color: $border-color;
 }
 
-.button-round {
+.btn-round {
     border-radius: 50%;
     width: 2.5rem;
     height: 2.5rem;
@@ -421,6 +421,7 @@ $color in $novartis-color-scheme {
         svg.icon {
             transition: $transition-base;
             width: 50%;
+
             * {
                 transition: $transition-base;
                 fill: none;
@@ -429,41 +430,41 @@ $color in $novartis-color-scheme {
         }
 
         // &:hover {
-                    
+
         //     svg.icon {
         //         polyline {
         //                 stroke: #fff !important;
         //             }
-                
+
         //     }
         // }
     }
 
-    &.button-sm {
+    &.btn-sm {
         width: 2rem;
         height: 2rem;
     }
 
-    &.button-lg {
+    &.btn-lg {
         width: 3.75rem;
         height: 3.75rem;
     }
 
-    &.button-xlg {
+    &.btn-xlg {
         width: 4.5rem;
         height: 4.5rem;
     }
 
-    &.button-lg,
-    &.button-xlg {
+    &.btn-lg,
+    &.btn-xlg {
         >.icon {
             height: 2rem;
         }
     }
 }
 
-.button-loading {
-    &:not(.button-loading-animate) {
+.btn-loading {
+    &:not(.btn-loading-animate) {
         >span {
             vertical-align: baseline;
         }
@@ -473,7 +474,7 @@ $color in $novartis-color-scheme {
         display: none;
     }
 
-    &.button-loading-animate {
+    &.btn-loading-animate {
         .icon {
             path {
                 animation: spin .5s infinite linear;
@@ -497,17 +498,22 @@ $color in $novartis-color-scheme {
 
 // Back to top button
 
-.button {
+.btn {
     &.back-to-top {
         position: fixed;
         bottom: $spacer;
         right: $spacer;
         z-index: $zindex-sticky;
+
+        svg {
+            height: 24px;
+            width: 24px;
+        }
     }
 }
 
 
-.button {
+.btn {
     >span {
         display: inline-block;
         vertical-align: middle;
@@ -534,5 +540,58 @@ $color in $novartis-color-scheme {
         path {
             fill: #fff;
         }
+    }
+
+    &.light,
+    &.btn-light {
+        // color: $nvs-grey-dark;
+        // border-color: $nvs-grey-dark;
+        color: $nvs-black;
+        background-color: transparent;
+        border: 2px solid $nvs-black;
+
+        &:hover {
+            border-color: $nvs-black !important;
+            background-color: $nvs-grey-light !important;
+        }
+    }
+
+    &.btn-dark {
+        &:hover {
+            border-color: $nvs-grey-dark !important;
+            background-color: $nvs-grey-dark !important;
+        }
+    }
+
+    &.btn-link{
+        background: transparent;
+        border-color: transparent;
+        color: $nvs-black;
+        font-weight: 600;
+
+        &:hover{
+            background-color: $nvs-grey-light;
+            // border-color: $nvs-grey-dark;
+        }
+    }
+
+}
+
+.btn-group {
+    .btn-lighter {
+        color: $nvs-grey-dark;
+        border-color: $nvs-grey-dark;
+
+        &:hover {
+            background-color: $nvs-grey-light;
+            color: $nvs-black;
+        }
+    }
+
+    // Prevent double borders when buttons are next to each other
+    >.btn:not(:first-child),
+    >.btn-group:not(:first-child) {
+        margin-left: -2px;
+
     }
 }

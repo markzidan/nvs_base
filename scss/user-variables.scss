@@ -20,7 +20,9 @@ $novartis-color-scheme: (
     "apricot":      $nvs-apricot,
     "black":        $nvs-black,
     "grey-light":   $nvs-grey-light,
-    "grey-dark":    $nvs-grey-dark
+    "light":        $nvs-grey-light,
+    "grey-dark":    $nvs-grey-dark,
+    "dark":         $nvs-grey-dark
 );
 
 $novartis-patterns: (
@@ -51,6 +53,9 @@ $arrow-character: "\2192";
 $primary:       $nvs-blue;
 $primary-2:     $nvs-carmine;
 $primary-3:     #000;
+
+$btn-transition: color .2s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, opacity .2s ease-in-out box-shadow .15s ease-in-out !default;
+$tab-transition: color .2s linear, background-color .15s linear, border-color .15s linear !default;
 
 // Do not change or remove the $theme-color-scheme or $theme-colors maps below
 

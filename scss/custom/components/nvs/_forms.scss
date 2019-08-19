@@ -1,0 +1,417 @@
+//
+//
+// forms.scss
+//
+//
+
+.form-control {
+    transition: background-color $transition-time ease, border-color $transition-time ease, opacity $transition-time ease;
+    border-radius: 0;
+    // border-color: $nvs-grey-light;
+
+    &:disabled {
+        opacity: .5;
+    }
+
+    &[readonly] {
+        background: $input-bg;
+    }
+
+    &:focus {
+        border-color: $nvs-grey-dark;
+
+        ~.input-group-append,
+        ~.input-group-prepend {
+            // border-color: $nvs-grey-dark;
+
+            label,
+            .input-group-text {
+                border-color: $nvs-grey-dark;
+            }
+        }
+    }
+}
+
+select.form-control {
+    display: inline-block;
+    width: 100%;
+    height: $custom-select-height;
+    padding: $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding) $custom-select-padding-y $custom-select-padding-x;
+    font-family: $custom-select-font-family;
+    @include font-size($custom-select-font-size);
+    font-weight: $custom-select-font-weight;
+    line-height: $custom-select-line-height;
+    color: $custom-select-color;
+    vertical-align: middle;
+    background: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 24 24' style='enable-background:new 0 0 24 24;' xml:space='preserve'%3E%3Cpath style='fill:%23212529;' d='M11.9,18.2L3.6,6.8h16.6L11.9,18.2z'/%3E%3C/svg%3E%0A") no-repeat right 0.75rem center/12px 12px;
+    background-color: $custom-select-bg;
+    border: $custom-select-border-width solid $custom-select-border-color;
+    border-radius: 0;
+    @include box-shadow($custom-select-box-shadow);
+    appearance: none;
+
+    &:focus {
+        border-color: $nvs-grey-dark;
+        outline: 0;
+
+        @if $enable-shadows {
+            box-shadow: $custom-select-box-shadow, $custom-select-focus-box-shadow;
+        }
+
+        @else {
+            box-shadow: $custom-select-focus-box-shadow;
+        }
+
+        &::-ms-value {
+            // For visual consistency with other platforms/browsers,
+            // suppress the default white text on blue background highlight given to
+            // the selected option text when the (still closed) <select> receives focus
+            // in IE and (under certain conditions) Edge.
+            // See https://github.com/twbs/bootstrap/issues/19398.
+            color: $input-color;
+            background-color: $input-bg;
+
+        }
+
+        &[multiple],
+        &[size]:not([size="1"]) {
+            height: auto;
+            padding-right: $custom-select-padding-x;
+            background-image: none;
+        }
+
+        &:disabled {
+            color: $custom-select-disabled-color;
+            background-color: $custom-select-disabled-bg;
+        }
+
+        // Hides the default caret in IE11
+        &::-ms-expand {
+            display: none;
+        }
+    }
+}
+
+.form-group {
+    label {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: $nvs-black;
+
+        &.custom-control-label {
+            color: $nvs-black;
+
+            /*             &:before,
+            &:after {
+                top: 0.125rem;
+            } */
+        }
+
+
+
+    }
+
+    /* 
+    &.rounded {
+        border-radius: $border-radius !important;
+    } */
+}
+
+/* 
+.text-light {
+    .form-group {
+        >label {
+            color: rgba($white, .75);
+        }
+    }
+} */
+
+@include media-breakpoint-down(sm) {
+    .form-control {
+        font-size: 16px;
+    }
+}
+
+// Input Groups
+
+.input-group {
+    .icon {
+        // opacity: .5;
+
+        path {
+            fill: #fff !important;
+        }
+
+        // * {
+        //     fill: $headings-color !important;
+        // }
+    }
+
+    .input-group-text {
+        font-weight: $font-weight-bold;
+        // border-color: $nvs-grey-light;
+    }
+
+    >.form-control {
+        order: 1;
+
+        +.input-group-prepend {
+            order: 0;
+
+        }
+    }
+
+    .input-group-prepend {
+        margin-right: -1px;
+        // position: absolute;
+        left: 0;
+        z-index: 5;
+        order: 0;
+
+        label.input-group-text {
+            border-right: none !important;
+            // border-color: $nvs-grey-light;
+        }
+    }
+
+
+}
+
+
+
+// Custom Selects
+
+.form-group {
+    position: relative;
+
+    .custom-select {
+        cursor: pointer;
+        background: none;
+        border-radius: 0;
+
+        +.icon {
+            pointer-events: none;
+            position: absolute;
+            top: $spacer/3;
+            right: $spacer/2;
+            transform: rotateZ(-90deg);
+
+            path {
+                fill: $gray-900;
+            }
+        }
+
+        &.custom-select-lg {
+            +.icon {
+                top: $spacer/1.25;
+            }
+        }
+    }
+}
+
+// Custom Controls
+
+.custom-control {
+    label {
+        cursor: pointer;
+    }
+}
+
+// Custom Radio
+
+.custom-radio {
+    line-height: 1.3125rem;
+    min-height: 1.3125rem;
+}
+
+// Custom Checkboxes
+
+
+.custom-control-label {
+    user-select: none;
+
+    &:before {
+        border: $border-width solid $nvs-grey-dark;
+    }
+
+    // &:after {}
+
+    &.text-small {
+
+        &:before,
+        &:after {
+            top: 0.125rem;
+        }
+    }
+
+}
+
+.custom-checkbox {
+    .custom-control-label {
+
+        &:before {
+            border-radius: 0;
+        }
+    }
+}
+
+.custom-control-input {
+    &:checked {
+        ~.custom-control-label {
+            &:before {
+                border-color: $nvs-black;
+                background-color: $nvs-black;
+            }
+        }
+    }
+}
+
+// Custom Checkbox Switches
+
+.custom-control {
+    padding-left: $spacer*1.25;
+
+    .custom-control-label {
+
+        &:before,
+        &:after {
+            left: -$spacer*1.25;
+
+        }
+    }
+}
+
+.custom-switch {
+    padding-left: $spacer*2.5;
+
+    .custom-control-label {
+        &:before {
+            height: $spacer;
+            left: -($spacer*2.5);
+            top: 0;
+        }
+
+        &:after {
+            top: $spacer/6;
+            left: -($spacer*2.25);
+            background-color: white;
+            border: 1px solid $nvs-grey-dark;
+        }
+    }
+
+    .custom-control-input {
+        &:checked {
+            ~.custom-control-label {
+                &:after {
+                    transform: translateX(1.25rem);
+                    border-color: white;
+                }
+            }
+        }
+    }
+}
+
+// Custom Range
+
+.custom-range-labels {
+    margin-top: .25rem;
+    display: flex;
+    justify-content: space-between;
+
+    >span {
+        font-size: $small-font-size;
+        min-width: 13px;
+        text-align: center;
+        color: $nvs-grey-dark;
+        font-weight: $font-weight-bold;
+        display: block;
+
+        &:before {
+            content: '';
+            height: .125rem;
+            width: 2px;
+            height: .4rem;
+            background: $nvs-grey-dark;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: .5rem;
+            opacity: .5;
+        }
+
+        &:first-child,
+        &:last-child {
+            &:before {
+                height: .6rem;
+            }
+        }
+    }
+}
+
+.custom-range {
+
+    /*     width: 100%;
+    height: calc(#{$custom-range-thumb-height} + #{$custom-range-thumb-focus-box-shadow-width * 2});
+    padding: 0; // Need to reset padding
+    background-color: transparent;
+    appearance: none;
+    &:focus {
+        // outline: none;
+
+        // Pseudo-elements must be split across multiple rulesets to have an effect.
+        // No box-shadow() mixin for focus accessibility.
+        &::-webkit-slider-thumb {
+            box-shadow: $custom-range-thumb-focus-box-shadow;
+        }
+
+        &::-moz-range-thumb {
+            box-shadow: $custom-range-thumb-focus-box-shadow;
+        }
+
+        &::-ms-thumb {
+            box-shadow: $custom-range-thumb-focus-box-shadow;
+        }
+    }
+
+    &::-moz-focus-outer {
+        border: 0;
+    }
+*/
+
+
+    &::-moz-range-thumb{
+        border-color: $nvs-grey-dark;
+    }
+    &::-ms-thumb{
+        border-color: $nvs-grey-dark;
+    }
+    &::-webkit-slider-thumb {
+        border-color: $nvs-grey-dark;
+
+        /*    width: $custom-range-thumb-width;
+        height: $custom-range-thumb-height;
+        margin-top: ($custom-range-track-height - $custom-range-thumb-height) / 2; // Webkit specific
+        @include gradient-bg($custom-range-thumb-bg);
+        border: $custom-range-thumb-border;
+        @include border-radius($custom-range-thumb-border-radius);
+        @include box-shadow($custom-range-thumb-box-shadow);
+        @include transition($custom-forms-transition);
+        appearance: none; */
+
+        &:active {
+            // @include gradient-bg($custom-range-thumb-active-bg);
+            background-color: $nvs-black;
+        }
+    }
+}
+
+// reCAPTCHA
+
+[data-recaptcha] {
+    &:not([data-size="invisible"]) {
+        margin-bottom: $spacer/2;
+    }
+}
+
+.grecaptcha-badge {
+    display: none;
+}

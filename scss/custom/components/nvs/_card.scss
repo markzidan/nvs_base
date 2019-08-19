@@ -108,8 +108,8 @@
   }
 
   h4 {
-    font-size: 1.625rem;
-    // line-height: 2.25rem;
+    // font-size: 1.625rem; // NVS spec is way too big
+    font-size: 1.25rem;
     line-height: 1.2;
     color: $nvs-black;
     font-weight: 700;
