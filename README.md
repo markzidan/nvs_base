@@ -1,30 +1,15 @@
-# README #
+# Novartis Base Template #
 
-Leap Bootstrap Theme by Medium Rare
+Novartis branded Bootstrap 4 theme. 
 
-### Where are the docs? ###
+### Info ###
 
-* Formal documentation is located at http://leap.mediumra.re/documentation/index.html - accessible from the **Documentation** link on most demo pages.
-* You can find lists of the styled components at pages/components-leap.html and pages/components-bootstrap.html
+* This is used as the starter template for internal Novartis sites. Styles are based on Novartis Brand Lab guideline and styles used on the [Novartis website](novartis.com)  
+* This repo started as the Leap Bootstrap Theme by Medium Rare, and was customized to Novartis specs. Documentation for original theme [can be found here](http://leap.mediumra.re/documentation/index.html) 
 
-### Getting Set Up (optional) ###
-
-Setup instructions are located in the docs mentioned above.
-
-The short version:
+### Set Up (only required once when repo is cloned.) ###
 
 * npm install -g gulp-cli
 * npm install
 * gulp
 
-### Getting Support ###
-
-Medium Rare provides support for bugfixes and guidance on using the theme.
-
-To access support, find the support link in your Bootstrap Marketplace dashboard.
-
-### Giving Feedback ###
-
-We strive to improve our products and we rely on feedback from our customers.
-
-Please feel free to share any feedback about Leap via twitter @mrareweb or feedback(at)mrare.co.
